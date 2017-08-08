@@ -1,7 +1,11 @@
 (function() {
      function SongPlayer() {
           var SongPlayer = {};
-         
+          
+          /**
+          * @desc object that hold current song value
+          * @type {Object}
+          */
           var currentSong = null;
           
           /**
@@ -29,19 +33,38 @@
               currentSong = song;
           };
           
+          /**
+          * @function playsong
+          * @desc Plays song and sets status of song to playing
+          * @param {Object} song
+          */
+          var playSong = function(song) {
+              currentBuzzObject.play();
+              song.playing = true;   
+          };
+          
+          /**
+          * @method Songplayer.play
+          * @desc Determines song state when user clicks icon and plays song
+          * @param {Object} song
+          */
           SongPlayer.play = function(song) {
               if (currentSong !== song) {
                   setSong(song);
-                  currentBuzzObject.play();
-                  song.playing = true;
+                  playSong(song);
                   
               } else if (currentSong === song) {
                   if (currentBuzzObject.isPaused()) {
-                      currentBuzzObject.play();
+                      playSong(song); 
                   }
               }              
           };
-         
+          
+          /**
+          * @method Songplayer.pause
+          * @desc Pauses song
+          * @param {Object} song
+          */
           SongPlayer.pause = function(song) {
               currentBuzzObject.pause();
               song.playing = false;
