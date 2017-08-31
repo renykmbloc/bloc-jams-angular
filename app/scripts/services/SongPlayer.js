@@ -83,6 +83,12 @@
           SongPlayer.currentTime = null;
          
           /**
+          * @desc Current playback volume of currently playing song
+          * @type {Number}
+          */
+          SongPlayer.volume = 25;
+         
+          /**
           * @method Songplayer.play
           * @desc Determines song state when user clicks icon and plays song
           * @param {Object} song
@@ -155,6 +161,17 @@
           SongPlayer.setCurrentTime = function(time) {
               if (currentBuzzObject) {
                   currentBuzzObject.setTime(time);
+               }
+          };
+         
+          /**
+          * @function setVolume
+          * @desc Set current volume of currently playing song
+          * @param {Number} volume
+          */
+          SongPlayer.setVolume = function(volume) {
+              if (currentBuzzObject) {
+                  currentBuzzObject.setVolume(volume);
                }
           };
           
